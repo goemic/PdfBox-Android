@@ -33,10 +33,10 @@ dependencies {
     implementation project(':library')
 //    implementation "com.tom-roush:pdfbox-android:${project.VERSION_NAME}"
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 
     // Optional dependencies
 
-    // Read JPX images
-    implementation 'com.gemalto.jp2:jp2-android:1.0.3'
+    // Read JPX images // todo remove this, it is not available anymore (jcenter)
+    compileOnly 'com.gemalto.jp2:jp2-android:1.0.3'
 }
