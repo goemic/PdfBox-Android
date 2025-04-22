@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId 'com.tom_roush.pdfbox.sample'
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
@@ -20,8 +20,8 @@ android {
 
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     lint {
         abortOnError false
@@ -38,5 +38,5 @@ dependencies {
     // Optional dependencies
 
     // Read JPX images // todo remove this, it is not available anymore (jcenter)
-    compileOnly 'com.gemalto.jp2:jp2-android:1.0.3'
+//    compileOnly 'com.gemalto.jp2:jp2-android:1.0.3'
 }
