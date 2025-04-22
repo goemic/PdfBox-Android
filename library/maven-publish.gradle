@@ -3,9 +3,9 @@ apply plugin: 'signing'
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
-task androidJavadocs(type: Javadoc) {
+tasks.register('androidJavadocs', Javadoc) {
     failOnError false
-    source = android.sourceSets.main.java.sourceFiles
+    source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 
     // disable the crazy super-strict doclint tool in Java 8
@@ -18,7 +18,7 @@ task androidJavadocs(type: Javadoc) {
 
     options.encoding = "UTF-8"
     options.docTitle("PdfBox-Android")
-    options.links("https://docs.oracle.com/en/java/javase/11/docs/api")
+    options.links("https://docs.oracle.com/en/java/javase/17/docs/api")
     options.links("https://developer.android.com/reference/")
 
     exclude '**/BuildConfig.java'
@@ -31,12 +31,13 @@ afterEvaluate {
     })
 }
 
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+tasks.register('androidJavadocsJar', Jar) {
+    dependsOn androidJavadocs
     archiveClassifier.set('javadoc')
     from androidJavadocs.destinationDir
 }
 
-task androidSourcesJar(type: Jar) {
+tasks.register('androidSourcesJar', Jar) {
     archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
 }
