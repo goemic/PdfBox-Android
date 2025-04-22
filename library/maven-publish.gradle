@@ -5,6 +5,7 @@ ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 tasks.register('androidJavadocs', Javadoc) {
     dependsOn ':library:generateDebugRFile'
+    dependsOn ':library:generateReleaseRFile'
 
     failOnError false
     source = android.sourceSets.main.java.srcDirs
