@@ -4,6 +4,8 @@ apply plugin: 'signing'
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 tasks.register('androidJavadocs', Javadoc) {
+    dependsOn ':library:generateDebugRFile'
+
     failOnError false
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
